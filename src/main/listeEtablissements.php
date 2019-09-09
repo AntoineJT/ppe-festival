@@ -6,19 +6,21 @@ include("_controlesEtGestionErreurs.inc.php");
 
 // CONNEXION AU SERVEUR MYSQL PUIS SÉLECTION DE LA BASE DE DONNÉES festival
 
-$connexion=connect();
+$connexion = connect();
 if (!$connexion)
 {
    ajouterErreur("Echec de la connexion au serveur MySql");
    afficherErreurs();
    exit();
 }
+/*
 if (!selectBase($connexion))
 {
    ajouterErreur("La base de données festival est inexistante ou non accessible");
    afficherErreurs();
    exit();
 }
+*/
 
 // AFFICHER L'ENSEMBLE DES ÉTABLISSEMENTS
 // CETTE PAGE CONTIENT UN TABLEAU CONSTITUÉ D'1 LIGNE D'EN-TÊTE ET D'1 LIGNE PAR
@@ -30,15 +32,18 @@ class='tabNonQuadrille'>
    <tr class='enTeteTabNonQuad'>
       <td colspan='4'>Etablissements</td>
    </tr>";
-     
-   $req=obtenirReqEtablissements();
-   $rsEtab=mysql_query($req, $connexion);
-   $lgEtab=mysql_fetch_array($rsEtab);
+
+   $req = obtenirReqEtablissements();
+   $rsEtab = $connexion->query($req);
+   $rsEtab->setFetchMode(PDO::FETCH_ASSOC);
+   $lgEtab = $rsEtab->fetch();
+   // $lgEtab=mysql_fetch_array($rsEtab);
+   
    // BOUCLE SUR LES ÉTABLISSEMENTS
-   while ($lgEtab!=FALSE)
+   while ($lgEtab != FALSE)
    {
-      $id=$lgEtab['id'];
-      $nom=$lgEtab['nom'];
+      $id = $lgEtab['id'];
+      $nom = $lgEtab['nom'];
       echo "
 		<tr class='ligneTabNonQuad'>
          <td width='52%'>$nom</td>
@@ -67,7 +72,8 @@ class='tabNonQuadrille'>
 			}
 			echo "
       </tr>";
-      $lgEtab=mysql_fetch_array($rsEtab);
+      $lgEtab = $rsEtab->fetch();
+      // $lgEtab = mysql_fetch_array($rsEtab);
    }   
    echo "
    <tr class='ligneTabNonQuad'>
