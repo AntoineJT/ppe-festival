@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>PROJET PERSONNALISE ENCADRE</title>
+</head>
+
+<body>
+
+<header>
+  <h1>PPE</h1>
+  <h2>Mission Festival de sport</h2>
+
+  <table>
+  <tr>
+    <th>Intitulé</th>
+    <td>Application Web de réservation pour la Maison de Ligues de Lorraine.</td>
+  </tr>
+  <tr>
+    <th>Parties prenantes</th>
+    <td>
+      <p>
+        La M2L souhaite disposer d'un module d'administration des caractéristiques des établissements (opérations de type LARCS).
+        Les responsables des établissements souhaitent que la M2L dispose d'un système souple de gestion de leurs données.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <th>Scénario typique (création)</th>
+    <td>
+      <p>
+        Le système présente la liste des établissements avec, pour chacun d'eux, un accès aux fonctions d'actualisation, de suppression (seulement si l'établissement n'a pas fait l'objet d'attribution de groupes) et de consultation.
+      </p>
+      <p>
+        L'agent sélectionne la commande <em>création d'un établissement</em>.
+        Le système retourne un formulaire de création.
+        L'agent renseigne les champs et soumet le formulaire.
+        Le système crée l'établissement.
+        Affichage d’un message de confirmation de la création de l’établissement.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <th>Cas particuliers</th>
+    <td>
+      <ul>
+        <li>
+          Il n'y a pas encore d'établissement répertorié : le système permet uniquement l’accès à la             fonction de création.
+        </li>
+        <li>
+          Certains champs sont mal renseignés (vide, mal typé) : affichage d’un        message d’erreur.
+        </li>
+        <li>
+          Un établissement ayant le même identifiant ou le même nom est déjà répertorié par le      système : affichage d’un message d’erreur.
+        </li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <th>Durée estimée</th>
+    <td>2 seances, soit 8 heures</td>
+  </tr>
+  <tr>
+    <th>Savoirs associés</th>
+    <td>
+      <ul>
+        <li>Administration de l'environement de production</li>
+        <li>Développement front et back ends</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <th>Savoir-faire mobilisés</th>
+    <td>
+      <ul>
+        <li>Installer un composant logiciel.</li>
+        <li>Accéder à un service sécurisé via Internet.</li>
+        <li>Adapter le code d'une application.</li>
+        <li>Documenter du code source.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <th>Equipes</th>
+    <td>2~4 étudiants</td>
+  </tr>
+  </table>
+</header>
+
+<h3>Travail à réaliser</h3>
+
+<dl>
+  <dt>Objectifs</dt>
+  <dd>
+    <ul>
+      <li>Dresser un diagramme de Gantt</li>
+      <li>
+        Installer un environnement de production :
+        <ul>
+          <li>un serveur Apache (avec interpréteur PHP) ;</li>
+          <li>un serveur MySQL.</li>
+        </ul>
+      </li>
+      <li>Sécuriser le serveur Web (exemple : <code>iptables</code>).</li>
+      <li>
+        Sur un environnement de développement :
+        <ul>
+          <li>Adapter le code de l'application du <q>Festival de musique</q> pour les besoins de la M2L.</li>
+          <li>Ajouter des validations coté serveur pour sécuriser les informations reçues par formulaire.</li>
+          <li>Ajouter des validations coté client pour sécuriser les informations reçues par formulaire.</li>
+          <li>Migrer le code de l'application vers HTML5.</li>
+          <li>Mettre à jour le design avec Bootstrap.</li>
+        </ul>
+      </li>
+      <li>Déployer le code produit de l'environnement de développement vers celui de production.</li>
+      <li>Rédiger un scénario, en guise de test voire de démonstration.</li>
+    </ul>
+  </dd>
+</dl>
+
+<h4>EVALUATION</h4>
+
+<p>Votre travail est évalué par une note finale, moyenne de la note individuelle et de la note d'équipe.</p>
+
+<dl>
+  <dt>Pour la note INDIVIDUELLE</dt>
+  <dd>
+    <ul>
+      <li>
+        Rendre un compte rendu de la nouvelle architecture de réseaux.
+        Ne pas hésiter à l'enrichir de schémas et de toutes données illustrant votre travail.
+        Peuvent figurer la démarche empruntée ainsi que tout éventuel problème rencontré.
+      </li>
+    </ul>
+  </dd>
+</dl>
+
+<dl>
+  <dt>Pour la note de l'EQUIPE, 30 minutes maximum à l'oral devant toute la classe. Penser à répartir les tâches d'animation.</dt>
+  <dd>
+    <ul>
+      <li>Présenter et justifier la nouvelle architecture.</li>
+      <li>Structurer la présentation en sous parties.</li>
+    </ul>
+  </dd>
+</dl>
+
+</body>
+</html>
