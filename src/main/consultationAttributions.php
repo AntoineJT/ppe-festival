@@ -13,14 +13,6 @@ if (!$connexion)
    afficherErreurs();
    exit();
 }
-/*
-if (!selectBase($connexion))
-{
-   ajouterErreur("La base de données festival est inexistante ou non accessible");
-   afficherErreurs();
-   exit();
-}
-*/
 
 // CONSULTER LES ATTRIBUTIONS DE TOUS LES ÉTABLISSEMENTS
 
@@ -39,9 +31,7 @@ if ($nbEtab!=0)
    // D'EN-TÊTE ET LE DÉTAIL DES ATTRIBUTIONS
    $req=obtenirReqEtablissementsAyantChambresAttribuées();
    $rsEtab = $connexion->query($req);
-   // $rsEtab=mysql_query($req, $connexion);
    $lgEtab = $rsEtab->fetch(PDO::FETCH_ASSOC);
-   // $lgEtab=mysql_fetch_array($rsEtab);
    // BOUCLE SUR LES ÉTABLISSEMENTS AYANT DÉJÀ DES CHAMBRES ATTRIBUÉES
    while($lgEtab!=FALSE)
    {
@@ -77,10 +67,8 @@ if ($nbEtab!=0)
       // DANS L'ÉTABLISSEMENT       
       $req=obtenirReqGroupesEtab($idEtab);
       $rsGroupe = $connexion->query($req);
-      // $rsGroupe=mysql_query($req, $connexion);
       $lgGroupe = $rsGroupe->fetch(PDO::FETCH_ASSOC);
-      // $lgGroupe=mysql_fetch_array($rsGroupe);
-               
+
       // BOUCLE SUR LES GROUPES (CHAQUE GROUPE EST AFFICHÉ EN LIGNE)
       while($lgGroupe!=FALSE)
       {
@@ -96,13 +84,11 @@ if ($nbEtab!=0)
             <td width='35%' align='left'>$nbOccupGroupe</td>
          </tr>";
          $lgGroupe = $rsGroupe->fetch(PDO::FETCH_ASSOC);
-         // $lgGroupe=mysql_fetch_array($rsGroupe);
       } // Fin de la boucle sur les groupes
       
       echo "
       </table><br>";
       $lgEtab = $rsEtab->fetch(PDO::FETCH_ASSOC);
-      // $lgEtab=mysql_fetch_array($rsEtab);
    } // Fin de la boucle sur les établissements
 }
 

@@ -15,23 +15,7 @@ function connect()
       die();
    }
    return $dbh;
-
-
-   // return mysql_connect($hote, $login, $mdp);
 }
-
-/*
-function selectBase($connexion)
-{
-   // $bd = 'festival';
-   $query = 'SET CHARACTER SET utf8';
-   // Modification du jeu de caractères de la connexion
-   $connexion->query($query);
-   //$res = mysql_query($query, $connexion); 
-   // $ok = mysql_select_db($bd, $connexion);
-   return $ok;
-}
-*/
 
 // FONCTIONS DE GESTION DES ÉTABLISSEMENTS
 
@@ -59,16 +43,13 @@ function obtenirDetailEtablissement($connexion, $id)
 {
    $req = "SELECT * FROM Etablissement WHERE id='$id'";
    $rsEtab = $connexion->query($req);
-   //$rsEtab=mysql_query($req, $connexion);
    return $rsEtab->fetch(PDO::FETCH_ASSOC);
-   //return mysql_fetch_array($rsEtab);
 }
 
 function supprimerEtablissement($connexion, $id)
 {
    $req = "DELETE FROM Etablissement WHERE id='$id'";
    $connexion->query($req);
-   //mysql_query($req, $connexion);
 }
  
 function modifierEtablissement($connexion, $id, $nom, $adresseRue, $codePostal, 
@@ -91,7 +72,6 @@ function modifierEtablissement($connexion, $id, $nom, $adresseRue, $codePostal,
          nombreChambresOffertes='$nombreChambresOffertes' WHERE id='$id'";
    
    $connexion->query($req);
-   //mysql_query($req, $connexion);
 }
 
 function creerEtablissement($connexion, $id, $nom, $adresseRue, $codePostal, 
@@ -112,17 +92,13 @@ function creerEtablissement($connexion, $id, $nom, $adresseRue, $codePostal,
          '$nombreChambresOffertes')";
    
    $connexion->query($req);
-   //mysql_query($req, $connexion);
 }
-
 
 function estUnIdEtablissement($connexion, $id)
 {
    $req="SELECT * FROM Etablissement WHERE id='$id'";
    $rsEtab = $connexion->query($req);
-   // $rsEtab=mysql_query($req, $connexion);
    return $rsEtab->fetch(PDO::FETCH_ASSOC);
-   // return mysql_fetch_array($rsEtab);
 }
 
 function estUnNomEtablissement($connexion, $mode, $id, $nom)
@@ -140,18 +116,14 @@ function estUnNomEtablissement($connexion, $mode, $id, $nom)
       $req="SELECT * FROM Etablissement WHERE nom='$nom' AND id!='$id'";
    }
    $rsEtab = $connexion->query($req);
-   // $rsEtab=mysql_query($req, $connexion);
    return $rsEtab->fetch(PDO::FETCH_ASSOC);
-   // return mysql_fetch_array($rsEtab);
 }
 
 function obtenirNbEtab($connexion)
 {
    $req="SELECT COUNT(*) AS nombreEtab FROM Etablissement";
    $rsEtab = $connexion->query($req);
-   // $rsEtab=mysql_query($req, $connexion);
    $lgEtab = $rsEtab->fetch(PDO::FETCH_ASSOC);
-   //$lgEtab=mysql_fetch_array($rsEtab);
    return $lgEtab["nombreEtab"];
 }
 
@@ -160,9 +132,7 @@ function obtenirNbEtabOffrantChambres($connexion)
    $req="SELECT COUNT(*) AS nombreEtabOffrantChambres FROM Etablissement WHERE 
          nombreChambresOffertes!=0";
    $rsEtabOffrantChambres = $connexion->query($req);
-   // $rsEtabOffrantChambres=mysql_query($req, $connexion);
    $lgEtabOffrantChambres = $rsEtabOffrantChambres->fetch(PDO::FETCH_ASSOC);
-   // $lgEtabOffrantChambres=mysql_fetch_array($rsEtabOffrantChambres);
    return $lgEtabOffrantChambres["nombreEtabOffrantChambres"];
 }
 
@@ -187,9 +157,7 @@ function obtenirNomGroupe($connexion, $id)
 {
    $req="SELECT nom FROM Groupe WHERE id='$id'";
    $rsGroupe = $connexion->query($req);
-   // $rsGroupe=mysql_query($req, $connexion);
    $lgGroupe = $rsGroupe->fetch(PDO::FETCH_ASSOC);
-   // $lgGroupe=mysql_fetch_array($rsGroupe);
    return $lgGroupe["nom"];
 }
 
@@ -200,9 +168,7 @@ function existeAttributionsEtab($connexion, $id)
 {
    $req="SELECT * FROM Attribution WHERE idEtab='$id'";
    $rsAttrib = $connexion->query($req);
-   // $rsAttrib=mysql_query($req, $connexion);
    return $rsAttrib->fetch(PDO::FETCH_ASSOC);
-   // return mysql_fetch_array($rsAttrib);
 }
 
 // Retourne le nombre de chambres occupées pour l'id étab transmis
@@ -211,9 +177,7 @@ function obtenirNbOccup($connexion, $idEtab)
    $req="SELECT IFNULL(SUM(nombreChambres), 0) AS totalChambresOccup FROM
         Attribution WHERE idEtab='$idEtab'";
    $rsOccup = $connexion->query($req);
-   // $rsOccup=mysql_query($req, $connexion);
    $lgOccup = $rsOccup->fetch(PDO::FETCH_ASSOC);
-   //$lgOccup=mysql_fetch_array($rsOccup);
    return $lgOccup["totalChambresOccup"];
 }
 
@@ -224,9 +188,7 @@ function modifierAttribChamb($connexion, $idEtab, $idGroupe, $nbChambres)
    $req="SELECT COUNT(*) AS nombreAttribGroupe FROM Attribution WHERE idEtab=
         '$idEtab' AND idGroupe='$idGroupe'";
    $rsAttrib = $connexion->query($req);
-   // $rsAttrib=mysql_query($req, $connexion);
    $lgAttrib = $rsAttrib->fetch(PDO::FETCH_ASSOC);
-   // $lgAttrib=mysql_fetch_array($rsAttrib);
    if ($nbChambres==0)
       $req="DELETE FROM Attribution WHERE idEtab='$idEtab' AND idGroupe='$idGroupe'";
    else
@@ -238,7 +200,6 @@ function modifierAttribChamb($connexion, $idEtab, $idGroupe, $nbChambres)
          $req="insert into Attribution values('$idEtab','$idGroupe', $nbChambres)";
    }
    $connexion->query($req);
-   // mysql_query($req, $connexion);
 }
 
 // Retourne la requête permettant d'obtenir les id et noms des groupes affectés
@@ -257,9 +218,7 @@ function obtenirNbOccupGroupe($connexion, $idEtab, $idGroupe)
    $req="SELECT nombreChambres FROM Attribution WHERE idEtab='$idEtab'
         AND idGroupe='$idGroupe'";
    $rsAttribGroupe = $connexion->query($req);
-   // $rsAttribGroupe=mysql_query($req, $connexion);
    if ($lgAttribGroupe = $rsAttribGroupe->fetch(PDO::FETCH_ASSOC))
-   // if ($lgAttribGroupe=mysql_fetch_array($rsAttribGroupe))
       return $lgAttribGroupe["nombreChambres"];
    return 0;
 }

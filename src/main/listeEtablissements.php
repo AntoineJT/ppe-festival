@@ -13,14 +13,6 @@ if (!$connexion)
    afficherErreurs();
    exit();
 }
-/*
-if (!selectBase($connexion))
-{
-   ajouterErreur("La base de données festival est inexistante ou non accessible");
-   afficherErreurs();
-   exit();
-}
-*/
 
 // AFFICHER L'ENSEMBLE DES ÉTABLISSEMENTS
 // CETTE PAGE CONTIENT UN TABLEAU CONSTITUÉ D'1 LIGNE D'EN-TÊTE ET D'1 LIGNE PAR
@@ -37,8 +29,7 @@ class='tabNonQuadrille'>
    $rsEtab = $connexion->query($req);
    $rsEtab->setFetchMode(PDO::FETCH_ASSOC);
    $lgEtab = $rsEtab->fetch();
-   // $lgEtab=mysql_fetch_array($rsEtab);
-   
+
    // BOUCLE SUR LES ÉTABLISSEMENTS
    while ($lgEtab != FALSE)
    {
@@ -73,8 +64,7 @@ class='tabNonQuadrille'>
 			echo "
       </tr>";
       $lgEtab = $rsEtab->fetch();
-      // $lgEtab = mysql_fetch_array($rsEtab);
-   }   
+   }
    echo "
    <tr class='ligneTabNonQuad'>
       <td colspan='4'><a href='creationEtablissement.php?action=demanderCreEtab'>
