@@ -32,7 +32,7 @@ function obtenirReqEtablissementsOffrantChambres()
    return $req;
 }
 
-function obtenirReqEtablissementsAyantChambresAttribuées()
+function obtenirReqEtablissementsAyantChambresAttribuees()
 {
    $req="SELECT DISTINCT id, nom, nombreChambresOffertes FROM Etablissement, 
          Attribution WHERE id = idEtab ORDER BY id";
@@ -119,6 +119,7 @@ function estUnNomEtablissement($connexion, $mode, $id, $nom)
    return $rsEtab->fetch(PDO::FETCH_ASSOC);
 }
 
+/*
 function obtenirNbEtab($connexion)
 {
    $req="SELECT COUNT(*) AS nombreEtab FROM Etablissement";
@@ -126,6 +127,7 @@ function obtenirNbEtab($connexion)
    $lgEtab = $rsEtab->fetch(PDO::FETCH_ASSOC);
    return $lgEtab["nombreEtab"];
 }
+*/
 
 function obtenirNbEtabOffrantChambres($connexion)
 {

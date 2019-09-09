@@ -29,7 +29,7 @@ if ($nbEtab!=0)
    
    // POUR CHAQUE ÉTABLISSEMENT : AFFICHAGE D'UN TABLEAU COMPORTANT 2 LIGNES 
    // D'EN-TÊTE ET LE DÉTAIL DES ATTRIBUTIONS
-   $req=obtenirReqEtablissementsAyantChambresAttribuées();
+   $req=obtenirReqEtablissementsAyantChambresAttribuees();
    $rsEtab = $connexion->query($req);
    $lgEtab = $rsEtab->fetch(PDO::FETCH_ASSOC);
    // BOUCLE SUR LES ÉTABLISSEMENTS AYANT DÉJÀ DES CHAMBRES ATTRIBUÉES
