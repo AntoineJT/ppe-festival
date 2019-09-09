@@ -7,7 +7,7 @@
 function estUnCp($codePostal)
 {
    // Le code postal doit comporter 5 chiffres
-   return strlen($codePostal)== 5 && estEntier($codePostal);
+   return strlen($codePostal) == 5 && estEntier($codePostal);
 }
 
 // Si la valeur transmise ne contient pas d'autres caractères que des chiffres, 
@@ -102,14 +102,10 @@ function ajouterErreur($msg)
 
 function nbErreurs()
 {
-   if (!isset($_REQUEST['erreurs']))
-   {
+   if (!isset($_REQUEST['erreurs'])) {
 	   return 0;
-	}
-	else
-	{
-	   return count($_REQUEST['erreurs']);
-	}
+   }
+   return count($_REQUEST['erreurs']);
 }
  
 function afficherErreurs()
