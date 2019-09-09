@@ -119,8 +119,10 @@ function creerEtablissement($connexion, $id, $nom, $adresseRue, $codePostal,
 function estUnIdEtablissement($connexion, $id)
 {
    $req="SELECT * FROM Etablissement WHERE id='$id'";
-   $rsEtab=mysql_query($req, $connexion);
-   return mysql_fetch_array($rsEtab);
+   $rsEtab = $connexion->query($req);
+   // $rsEtab=mysql_query($req, $connexion);
+   return $rsEtab->fetch(PDO::FETCH_ASSOC);
+   // return mysql_fetch_array($rsEtab);
 }
 
 function estUnNomEtablissement($connexion, $mode, $id, $nom)
