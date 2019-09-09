@@ -9,12 +9,12 @@ function connect()
    $login = 'festival';
    $mdp = 'secret';
    try {
-      $dbh = new PDO("mysql:dbname=$bd;host=$hote", $login, $mdp);
+      $dbh = new PDO("mysql:dbname=$bd;host=$hote;charset=utf8", $login, $mdp);
    } catch(PDOException $e){
       echo 'Exception reçue : ', $e->getMessage(), '\n';
       die();
    }
-
+   return $dbh;
 
 
    // return mysql_connect($hote, $login, $mdp);
