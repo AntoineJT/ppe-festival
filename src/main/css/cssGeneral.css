@@ -11,6 +11,11 @@ Idem pour background-color) */
    font:11px Arial, Helvetica, sans-serif;
 }
 
+.center {
+   display:flex;
+   justify-content: center;
+}
+
 /* Style pour le titre (couleur du texte : rouge) */
 .titre 
 {

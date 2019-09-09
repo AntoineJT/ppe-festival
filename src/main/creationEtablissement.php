@@ -187,7 +187,7 @@ if ($action=='validerCreEtab')
    else
    {
       echo "
-      <h5><center>La création de l'établissement a été effectuée</center></h5>";
+      <h5 class='center'>La création de l'établissement a été effectuée</h5>";
    }
 }
 

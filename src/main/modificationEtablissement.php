@@ -187,7 +187,7 @@ if ($action=='validerModifEtab')
    else
    {
       echo "
-      <h5><center>La modification de l'établissement a été effectuée</center></h5>";
+      <h5 class='center'>La modification de l'établissement a été effectuée</h5>";
    }
 }
 
