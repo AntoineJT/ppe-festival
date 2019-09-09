@@ -13,6 +13,7 @@ if (!$connexion)
    afficherErreurs();
    exit();
 }
+/*
 if (!selectBase($connexion))
 {
    ajouterErreur("La base de données festival est inexistante ou non accessible");
