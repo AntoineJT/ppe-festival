@@ -38,8 +38,10 @@ if ($nbEtab!=0)
    // POUR CHAQUE ÉTABLISSEMENT : AFFICHAGE D'UN TABLEAU COMPORTANT 2 LIGNES 
    // D'EN-TÊTE ET LE DÉTAIL DES ATTRIBUTIONS
    $req=obtenirReqEtablissementsAyantChambresAttribuées();
-   $rsEtab=mysql_query($req, $connexion);
-   $lgEtab=mysql_fetch_array($rsEtab);
+   $rsEtab = $connexion->query($req);
+   // $rsEtab=mysql_query($req, $connexion);
+   $lgEtab = $rsEtab->fetch(PDO::FETCH_ASSOC);
+   // $lgEtab=mysql_fetch_array($rsEtab);
    // BOUCLE SUR LES ÉTABLISSEMENTS AYANT DÉJÀ DES CHAMBRES ATTRIBUÉES
    while($lgEtab!=FALSE)
    {
@@ -74,8 +76,10 @@ if ($nbEtab!=0)
       // AFFICHAGE DU DÉTAIL DES ATTRIBUTIONS : UNE LIGNE PAR GROUPE AFFECTÉ 
       // DANS L'ÉTABLISSEMENT       
       $req=obtenirReqGroupesEtab($idEtab);
-      $rsGroupe=mysql_query($req, $connexion);
-      $lgGroupe=mysql_fetch_array($rsGroupe);
+      $rsGroupe = $connexion->query($req);
+      // $rsGroupe=mysql_query($req, $connexion);
+      $lgGroupe = $rsGroupe->fetch(PDO::FETCH_ASSOC);
+      // $lgGroupe=mysql_fetch_array($rsGroupe);
                
       // BOUCLE SUR LES GROUPES (CHAQUE GROUPE EST AFFICHÉ EN LIGNE)
       while($lgGroupe!=FALSE)
@@ -91,12 +95,14 @@ if ($nbEtab!=0)
          echo "
             <td width='35%' align='left'>$nbOccupGroupe</td>
          </tr>";
-         $lgGroupe=mysql_fetch_array($rsGroupe);
+         $lgGroupe = $rsGroupe->fetch(PDO::FETCH_ASSOC);
+         // $lgGroupe=mysql_fetch_array($rsGroupe);
       } // Fin de la boucle sur les groupes
       
       echo "
       </table><br>";
-      $lgEtab=mysql_fetch_array($rsEtab);
+      $lgEtab = $rsEtab->fetch(PDO::FETCH_ASSOC);
+      // $lgEtab=mysql_fetch_array($rsEtab);
    } // Fin de la boucle sur les établissements
 }
 
