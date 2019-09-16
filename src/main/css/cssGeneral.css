@@ -1,10 +1,10 @@
-/* FEUILLE DE STYLES POUR TOUS LES STYLES DE L'APPLICATION 
-(Remarque : à plusieurs reprises, l'attribut color:black est précisé bien qu'il 
-ne soit pas utile ; ceci permet une validation du W3C sans avertissement. 
+/* FEUILLE DE STYLES POUR TOUS LES STYLES DE L'APPLICATION
+(Remarque : à plusieurs reprises, l'attribut color:black est précisé bien qu'il
+ne soit pas utile ; ceci permet une validation du W3C sans avertissement.
 Idem pour background-color) */
 
 /* Style de base pour la page (couleur fond : ocre, couleur texte : noir) */
-.basePage 
+.basePage
 {
    background-color:#FFDD88;
    color:black;
@@ -17,7 +17,7 @@ Idem pour background-color) */
 }
 
 /* Style pour le titre (couleur du texte : rouge) */
-.titre 
+.titre
 {
    background-color:#FFDD88;
    color:#F50033;
@@ -36,20 +36,20 @@ gras et en italique) */
 .texteAccueil
 {
    background-color:#FFDD88;
-   color:#000099;       
+   color:#000099;
    font:14px Georgia, "Times New Roman", Times, serif;
    font-weight:bold;
 }
 
 /* Style pour le texte dans les différentes balises citées */
-td,tr 
+td,tr
 {
    font:11px Arial, Helvetica, sans-serif;
 }
 
 /* STYLES POUR LES MENUS */
 
-/* Style du tableau contenant les éléments de menu : fond bleu ciel, épaisseur 
+/* Style du tableau contenant les éléments de menu : fond bleu ciel, épaisseur
 1px, espacement de 3x entre la bordure gauche de chaque cellule et le texte et
 texte centré */
 table.tabMenu td
@@ -64,9 +64,9 @@ table.tabMenu td
    width:33%;
    height:18px;
    text-align:center;
-} 
+}
 
-/* Style pour les éléments du menu (mise en gras et italique) */ 
+/* Style pour les éléments du menu (mise en gras et italique) */
 .menu
 {
    font:11px Georgia, "Times New Roman", Times, serif;
@@ -77,7 +77,7 @@ table.tabMenu td
 
 /* STYLES POUR LES TABLEAUX QUADRILLÉS */
 
-/* Style des tableaux avec quadrillage : épaisseur du quadrillage 1px, 
+/* Style des tableaux avec quadrillage : épaisseur du quadrillage 1px,
 espacement de 3x entre la bordure gauche de chaque cellule et le texte */
 table.tabQuadrille td
 {
@@ -86,20 +86,20 @@ table.tabQuadrille td
    border-left:1px solid #777777;
    border-top:1px #777777;
    padding-left:3px;
-} 
+}
 
-/* Style pour la 1ère ligne d'en-tête des tableaux quadrillés : fond avec 
+/* Style pour la 1ère ligne d'en-tête des tableaux quadrillés : fond avec
 nuances de jaune et texte centré */
 tr.enTeteTabQuad
 {
    background-image:url('../images/xpBarre.jpg');
    height:21px;
    text-align:center;
-} 
+}
 
-/* Style pour les lignes (autres que la 1ère ligne d'en-tête) des tableaux 
+/* Style pour les lignes (autres que la 1ère ligne d'en-tête) des tableaux
 quadrillés : fond écru et texte centré */
-tr.ligneTabQuad 
+tr.ligneTabQuad
 {
    background-color:#FFFFE0;
    text-align:center;
@@ -108,9 +108,9 @@ tr.ligneTabQuad
 
 /* STYLES POUR LES TABLEAUX NON QUADRILLÉS */
 
-/* Style des tableaux sans quadrillage : fond écru, épaisseur de la bordure 
+/* Style des tableaux sans quadrillage : fond écru, épaisseur de la bordure
 1px */
-table.tabNonQuadrille 
+table.tabNonQuadrille
 {
    background-color:#FFFFE0;
    border-bottom:1px solid #777777;
@@ -119,9 +119,9 @@ table.tabNonQuadrille
    border-top:1px #777777;
    color:black;
 }
- 
-/* Style pour la ligne d'en-tête des tableaux non quadrillés : fond avec 
-nuances de jaune, texte centré et en gras et trait bas pour séparer l'en-tête du 
+
+/* Style pour la ligne d'en-tête des tableaux non quadrillés : fond avec
+nuances de jaune, texte centré et en gras et trait bas pour séparer l'en-tête du
 corps du tableau */
 tr.enTeteTabNonQuad td
 {
@@ -130,10 +130,10 @@ tr.enTeteTabNonQuad td
    text-align:center;
    font-weight:bold;
    border-bottom:1px solid #777777;
-} 
+}
 
-/* Style pour les lignes (autres que la 1ère ligne d'en-tête) des tableaux non 
-quadrillés : fond écru, hauteur plus importante, texte aligné à gauche et 
+/* Style pour les lignes (autres que la 1ère ligne d'en-tête) des tableaux non
+quadrillés : fond écru, hauteur plus importante, texte aligné à gauche et
 espacement de 3px entre la bordure gauche de chaque cellule et le texte */
 tr.ligneTabNonQuad td
 {
@@ -142,9 +142,9 @@ tr.ligneTabNonQuad td
    text-align:left;
    padding-left:3px;
    color:black;
-} 
+}
 
-/* STYLE POUR LES MESSAGES D'ERREUR AFFICHÉS EN BAS DE PAGE (FOND : OCRE, 
+/* STYLE POUR LES MESSAGES D'ERREUR AFFICHÉS EN BAS DE PAGE (FOND : OCRE,
 COULEUR DU TEXTE : ROSE) */
 
 .msgErreur
@@ -167,6 +167,19 @@ td.reserveSiLien
 td.reserve
 {
    background-color:#FFBEFF;
-   color:black;
+   color:black;;
 }
 
+.bg-info{
+  border-radius: 10px 0;
+  text-align: center;
+  font-size: 3em;
+}
+
+#texteNiveau2 {
+  font-size:0.7em;
+}
+
+a.nav_pills{
+  background-color: #17a2b8;
+}
