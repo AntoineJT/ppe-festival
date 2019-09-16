@@ -28,7 +28,7 @@ echo "
    $nomGroupe=obtenirNomGroupe($connexion, $idGroupe);
    
    echo "
-   <br><center><h5>Combien de chambres souhaitez-vous pour le 
+   <br><div class='center'><h5>Combien de chambres souhaitez-vous pour le 
    groupe $nomGroupe dans cet établissement ?";
    
    echo "&nbsp;<select name='nbChambres'>";
@@ -41,7 +41,7 @@ echo "
    <input type='submit' value='Valider' name='valider'>&nbsp&nbsp&nbsp&nbsp
    <input type='reset' value='Annuler' name='Annuler'><br><br>
    <a href='modificationAttributions.php?action=demanderModifAttrib'>Retour</a>
-   </center>
+   </div>
 </form>";
 
 

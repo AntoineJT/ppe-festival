@@ -26,11 +26,11 @@ $nom=$lgEtab['nom'];
 if ($_REQUEST['action']=='demanderSupprEtab')    
 {
    echo "
-   <br><center><h5>Souhaitez-vous vraiment supprimer l'établissement $nom ? 
+   <br><h5 class='center'>Souhaitez-vous vraiment supprimer l'établissement $nom ? 
    <br><br>
    <a href='suppressionEtablissement.php?action=validerSupprEtab&amp;id=$id'>
    Oui</a>&nbsp; &nbsp; &nbsp; &nbsp;
-   <a href='listeEtablissements.php?'>Non</a></h5></center>";
+   <a href='listeEtablissements.php?'>Non</a></h5>";
 }
 
 // Cas 2ème étape (on vient de suppressionEtablissement.php)
@@ -39,8 +39,6 @@ else
 {
    supprimerEtablissement($connexion, $id);
    echo "
-   <br><br><center><h5>L'établissement $nom a été supprimé</h5>
-   <a href='listeEtablissements.php?'>Retour</a></center>";
+   <br><br><div class='center'><h5>L'établissement $nom a été supprimé</h5>
+   <a href='listeEtablissements.php?'>Retour</a></div>";
 }
-
-
