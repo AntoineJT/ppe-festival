@@ -5,7 +5,7 @@ echo '
 <!-- TITRE ET MENUS -->
 <html lang="fr">
     <head>
-        <title>Festival</title>
+        <title>Maison des Ligues</title>
         <meta http-equiv="Content-Language" content="fr">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <link href="css/cssGeneral.css" rel="stylesheet" type="text/css">
@@ -14,7 +14,7 @@ echo '
         <!--  Tableau contenant le titre -->
         <table width="100%" cellpadding="0" cellspacing="0">
             <tr> 
-                <td class="titre">Festival Folklores du Monde <br>
+                <td class="titre">Maison des Ligues<br>
                     <span id="texteNiveau2" class="texteNiveau2">
                         H&eacute;bergement des groupes</span><br>&nbsp;
                 </td>
