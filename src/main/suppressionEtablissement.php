@@ -43,4 +43,4 @@ else
    <a href='listeEtablissements.php?'>Retour</a></center>";
 }
 
-?>
+

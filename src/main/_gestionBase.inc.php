@@ -225,5 +225,5 @@ function obtenirNbOccupGroupe($connexion, $idEtab, $idGroupe)
    return 0;
 }
 
-?>
+
 

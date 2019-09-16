@@ -120,4 +120,4 @@ function afficherErreurs()
    echo '</div>';
 } 
 
-?>
+
