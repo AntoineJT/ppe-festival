@@ -225,5 +225,7 @@ function obtenirNbOccupGroupe($connexion, $idEtab, $idGroupe)
    return 0;
 }
 
-
+function obtenirHashMdp($connexion, $idEtab){
+    $req = "SELECT "
+}
 

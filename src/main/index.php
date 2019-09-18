@@ -1,9 +1,16 @@
 
 <?php
 
-include "_debut.inc.php";
+session_start();
 
-echo " <br> 
+if (!isset($_SESSION['compte'])){
+    include('login.php');
+} else {
+
+    include "_debut.inc.php";
+
+// TODO Modifier texte accueil
+    echo " <br> 
 <table width='80%' cellspacing='0' cellpadding='0' align='center'>
    <tr>  
       <td class='texteAccueil'>
@@ -35,7 +42,4 @@ echo " <br>
       </td>
    </tr>
 </table>";
-
-
-
-
+}
