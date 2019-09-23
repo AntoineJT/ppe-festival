@@ -3,10 +3,9 @@
 
 session_start();
 
-if (!isset($_SESSION['compte'])){
-    include('login.php');
+if (!is_null($_SESSION['compte'])){
+    header('Location: login.php');
 } else {
-
     include "_debut.inc.php";
 
 // TODO Modifier texte accueil

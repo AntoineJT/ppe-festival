@@ -1,12 +1,34 @@
 <?php
+session_start();
+include('_gestionBase.inc.php');
 
-if (isset($_POST)){
+if (isset($_POST['etablissement'])){
     $etablissement = isset($_POST['etablissement']) ? $_POST['etablissement'] : null;
     $mdp = isset($_POST['mdp']) ? $_POST['mdp'] : null;
 
-    if (!is_null($etablissement) && !is_null($mdp)){
-
+    if (is_null($etablissement) || is_null($mdp)){
+        die("Les champs obligatoires n'ont pas été remplis correctement");
     }
+    $connexion = connect();
+    // TODO Move that into gestionBase
+    $request = $connexion->prepare('SELECT mdp FROM Etablissement WHERE id = ?');
+    /*
+    // Temporary thing to generate hash easily
+    $toHash = $request->execute([$etablissement]);
+    $hash = password_hash($toHash, PASSWORD_ARGON2I);
+    echo $hash;
+    */
+    if (!$request->execute([$etablissement])){
+        die('Une erreur avec la base de données est survenue!');
+    }
+    $hash = $request->fetch()[0];
+    if (!password_verify($mdp, $hash)){
+        die('Le mot de passe ne correspond pas!');
+    }
+    $_SESSION['compte'] = $etablissement;
+} else
+if (isset($_GET['disconnect'])){
+    $_SESSION = null;
 } else {
     echo "
 <form method='POST'>

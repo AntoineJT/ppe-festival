@@ -2,6 +2,7 @@
 
 // FONCTIONS DE CONNEXION
 
+// TODO Sécuriser ça en faisant des requêtes préparées
 function connect()
 {
    $bd = 'festival';
@@ -224,8 +225,8 @@ function obtenirNbOccupGroupe($connexion, $idEtab, $idGroupe)
       return $lgAttribGroupe["nombreChambres"];
    return 0;
 }
-
+/*
 function obtenirHashMdp($connexion, $idEtab){
     $req = "SELECT "
 }
-
+*/
