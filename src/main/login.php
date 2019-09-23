@@ -28,7 +28,7 @@ if (isset($_POST['etablissement'])){
     $_SESSION['compte'] = $etablissement;
 } else
 if (isset($_GET['disconnect'])){
-    $_SESSION = null;
+    $_SESSION['compte'] = null;
     header('Location: login.php');
 } else {
     echo "
