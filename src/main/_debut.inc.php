@@ -13,14 +13,14 @@ echo '
     </head>
     <body class="p-3 mb-2 bg-white text-dark">
         <div class="p-3 mb-2 bg-info text-white">
-          Festival Folklores du Monde <br>
+          Festival Folklores du Monde<br>
           H&eacute;bergement des groupes</span>
         </div>
         <nav class="nav nav_pills nav-fill">
               <a class="nav-link nav-item" href="index.php">Accueil</a>
               <a class="nav-link nav-item" href="listeEtablissements.php">Gestion établissements</a>
               <a class="nav-link nav-item" href="consultationAttributions.php">Attributions chambres</a>
-
+              <a class="nav-link nav-item" href="login.php?disconnect">Déconnexion</a>
         </nav>
-      </body>
+    </body>
 ';
