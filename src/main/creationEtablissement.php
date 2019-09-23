@@ -1,72 +1,73 @@
 <?php
 
-// TODO Secure it (login)
+include '_gestionSession.inc.php';
 
-include("_debut.inc.php");
-include("_gestionBase.inc.php"); 
-include("_controlesEtGestionErreurs.inc.php");
+gererSession(function(){
+    include("_debut.inc.php");
+    include("_gestionBase.inc.php");
+    include("_controlesEtGestionErreurs.inc.php");
 
 // CONNEXION AU SERVEUR MYSQL PUIS SÉLECTION DE LA BASE DE DONNÉES festival
 
-$connexion=connect();
-if (!$connexion)
-{
-   ajouterErreur("Echec de la connexion au serveur MySql");
-   afficherErreurs();
-   exit();
-}
+    $connexion=connect();
+    if (!$connexion)
+    {
+        ajouterErreur("Echec de la connexion au serveur MySql");
+        afficherErreurs();
+        exit();
+    }
 
-// CRÉER UN ÉTABLISSEMENT 
+// CRÉER UN ÉTABLISSEMENT
 
 // Déclaration du tableau des civilités
-$tabCivilite=array("M.","Mme","Melle");  
+    $tabCivilite=array("M.","Mme","Melle");
 
-$action=$_REQUEST['action'];
+    $action=$_REQUEST['action'];
 
-// S'il s'agit d'une création et qu'on ne "vient" pas de ce formulaire (on 
-// "vient" de ce formulaire uniquement s'il y avait une erreur), il faut définir 
+// S'il s'agit d'une création et qu'on ne "vient" pas de ce formulaire (on
+// "vient" de ce formulaire uniquement s'il y avait une erreur), il faut définir
 // les champs à vide sinon on affichera les valeurs précédemment saisies
-if ($action=='demanderCreEtab') 
-{  
-   $id='';
-   $nom='';
-   $adresseRue='';
-   $ville='';
-   $codePostal='';
-   $tel='';
-   $adresseElectronique='';
-   $type=0;
-   $civiliteResponsable='Monsieur';
-   $nomResponsable='';
-   $prenomResponsable='';
-   $nombreChambresOffertes='';
-}
-else
-{
-   $id=$_REQUEST['id']; 
-   $nom=$_REQUEST['nom']; 
-   $adresseRue=$_REQUEST['adresseRue'];
-   $codePostal=$_REQUEST['codePostal'];
-   $ville=$_REQUEST['ville'];
-   $tel=$_REQUEST['tel'];
-   $adresseElectronique=$_REQUEST['adresseElectronique'];
-   $type=$_REQUEST['type'];
-   $civiliteResponsable=$_REQUEST['civiliteResponsable'];
-   $nomResponsable=$_REQUEST['nomResponsable'];
-   $prenomResponsable=$_REQUEST['prenomResponsable'];
-   $nombreChambresOffertes=$_REQUEST['nombreChambresOffertes'];
+    if ($action=='demanderCreEtab')
+    {
+        $id='';
+        $nom='';
+        $adresseRue='';
+        $ville='';
+        $codePostal='';
+        $tel='';
+        $adresseElectronique='';
+        $type=0;
+        $civiliteResponsable='Monsieur';
+        $nomResponsable='';
+        $prenomResponsable='';
+        $nombreChambresOffertes='';
+    }
+    else
+    {
+        $id=$_REQUEST['id'];
+        $nom=$_REQUEST['nom'];
+        $adresseRue=$_REQUEST['adresseRue'];
+        $codePostal=$_REQUEST['codePostal'];
+        $ville=$_REQUEST['ville'];
+        $tel=$_REQUEST['tel'];
+        $adresseElectronique=$_REQUEST['adresseElectronique'];
+        $type=$_REQUEST['type'];
+        $civiliteResponsable=$_REQUEST['civiliteResponsable'];
+        $nomResponsable=$_REQUEST['nomResponsable'];
+        $prenomResponsable=$_REQUEST['prenomResponsable'];
+        $nombreChambresOffertes=$_REQUEST['nombreChambresOffertes'];
 
-   verifierDonneesEtabC($connexion, $id, $nom, $adresseRue, $codePostal, $ville, 
-                        $tel, $nomResponsable, $nombreChambresOffertes);      
-   if (nbErreurs()==0)
-   {        
-      creerEtablissement($connexion, $id, $nom, $adresseRue, $codePostal, $ville,  
-                         $tel, $adresseElectronique, $type, $civiliteResponsable, 
-                         $nomResponsable, $prenomResponsable, $nombreChambresOffertes);
-   }
-}
+        verifierDonneesEtabC($connexion, $id, $nom, $adresseRue, $codePostal, $ville,
+            $tel, $nomResponsable, $nombreChambresOffertes);
+        if (nbErreurs()==0)
+        {
+            creerEtablissement($connexion, $id, $nom, $adresseRue, $codePostal, $ville,
+                $tel, $adresseElectronique, $type, $civiliteResponsable,
+                $nomResponsable, $prenomResponsable, $nombreChambresOffertes);
+        }
+    }
 
-echo "
+    echo "
 <form method='POST' action='creationEtablissement.php?'>
    <input type='hidden' value='validerCreEtab' name='action'>
    <table width='85%' align='center' cellspacing='0' cellpadding='0' 
@@ -80,8 +81,8 @@ echo "
          <td><input type='text' value='$id' name='id' size ='10' 
          maxlength='8'></td>
       </tr>";
-     
-      echo '
+
+    echo '
       <tr class="ligneTabNonQuad">
          <td> Nom*: </td>
          <td><input type="text" value="'.$nom.'" name="nom" size="50" 
@@ -115,21 +116,21 @@ echo "
       <tr class="ligneTabNonQuad">
          <td> Type*: </td>
          <td>';
-            if ($type==1)
-            {
-               echo " 
+    if ($type==1)
+    {
+        echo " 
                <input type='radio' name='type' value='1' checked>  
                Etablissement Scolaire
                <input type='radio' name='type' value='0'>  Autre";
-             }
-             else
-             {
-                echo " 
+    }
+    else
+    {
+        echo " 
                 <input type='radio' name='type' value='1'> 
                 Etablissement Scolaire
                 <input type='radio' name='type' value='0' checked> Autre";
-              }
-           echo "
+    }
+    echo "
            </td>
          </tr>
          <tr class='ligneTabNonQuad'>
@@ -138,16 +139,16 @@ echo "
          <tr class='ligneTabNonQuad'>
             <td> Civilité*: </td>
             <td> <select name='civiliteResponsable'>";
-               for ($i=0; $i<3; $i=$i+1)
-                  if ($tabCivilite[$i]==$civiliteResponsable) 
-                  {
-                     echo "<option selected>$tabCivilite[$i]</option>";
-                  }
-                  else
-                  {
-                     echo "<option>$tabCivilite[$i]</option>";
-                  }
-               echo '
+    for ($i=0; $i<3; $i=$i+1)
+        if ($tabCivilite[$i]==$civiliteResponsable)
+        {
+            echo "<option selected>$tabCivilite[$i]</option>";
+        }
+        else
+        {
+            echo "<option>$tabCivilite[$i]</option>";
+        }
+    echo '
                </select>&nbsp; &nbsp; &nbsp; &nbsp; Nom*: 
                <input type="text" value="'.$nomResponsable.'" name=
                "nomResponsable" size="26" maxlength="25">
@@ -162,8 +163,8 @@ echo "
             "nombreChambresOffertes" size ="2" maxlength="3"></td>
          </tr>
    </table>';
-   
-   echo "
+
+    echo "
    <table align='center' cellspacing='15' cellpadding='0'>
       <tr>
          <td align='right'><input type='submit' value='Valider' name='valider'>
@@ -178,19 +179,18 @@ echo "
    </table>
 </form>";
 
-// En cas de validation du formulaire : affichage des erreurs ou du message de 
+// En cas de validation du formulaire : affichage des erreurs ou du message de
 // confirmation
-if ($action=='validerCreEtab')
-{
-   if (nbErreurs()!=0)
-   {
-      afficherErreurs();
-   }
-   else
-   {
-      echo "
+    if ($action=='validerCreEtab')
+    {
+        if (nbErreurs()!=0)
+        {
+            afficherErreurs();
+        }
+        else
+        {
+            echo "
       <h5 class='center'>La création de l'établissement a été effectuée</h5>";
-   }
-}
-
-
+        }
+    }
+});

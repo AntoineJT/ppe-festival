@@ -1,9 +1,8 @@
 <?php
 
-if (!is_null($_SESSION['compte'])){
-    header('Location: login.php');
-} else {
+include '_gestionSession.inc.php';
 
+gererSession(function(){
     include("_debut.inc.php");
     include("_gestionBase.inc.php");
     include("_controlesEtGestionErreurs.inc.php");
@@ -91,5 +90,4 @@ if (!is_null($_SESSION['compte'])){
             $lgEtab = $rsEtab->fetch(PDO::FETCH_ASSOC);
         } // Fin de la boucle sur les établissements
     }
-}
-
+});

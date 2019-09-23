@@ -1,40 +1,41 @@
 <?php
 
-// TODO Secure it (login)
+include '_gestionSession.inc.php';
 
-include("_debut.inc.php");
-include("_gestionBase.inc.php"); 
-include("_controlesEtGestionErreurs.inc.php");
+gererSession(function(){
+    include("_debut.inc.php");
+    include("_gestionBase.inc.php");
+    include("_controlesEtGestionErreurs.inc.php");
 
 // CONNEXION AU SERVEUR MYSQL PUIS SÉLECTION DE LA BASE DE DONNÉES festival
 
-$connexion=connect();
-if (!$connexion)
-{
-   ajouterErreur("Echec de la connexion au serveur MySql");
-   afficherErreurs();
-   exit();
-}
+    $connexion=connect();
+    if (!$connexion)
+    {
+        ajouterErreur("Echec de la connexion au serveur MySql");
+        afficherErreurs();
+        exit();
+    }
 
-$id=$_REQUEST['id'];  
+    $id=$_REQUEST['id'];
 
 // OBTENIR LE DÉTAIL DE L'ÉTABLISSEMENT SÉLECTIONNÉ
 
-$lgEtab=obtenirDetailEtablissement($connexion, $id);
+    $lgEtab=obtenirDetailEtablissement($connexion, $id);
 
-$nom=$lgEtab['nom'];
-$adresseRue=$lgEtab['adresseRue'];
-$codePostal=$lgEtab['codePostal'];
-$ville=$lgEtab['ville'];
-$tel=$lgEtab['tel'];
-$adresseElectronique=$lgEtab['adresseElectronique'];
-$type=$lgEtab['type'];
-$civiliteResponsable=$lgEtab['civiliteResponsable'];
-$nomResponsable=$lgEtab['nomResponsable'];
-$prenomResponsable=$lgEtab['prenomResponsable'];
-$nombreChambresOffertes=$lgEtab['nombreChambresOffertes'];
+    $nom=$lgEtab['nom'];
+    $adresseRue=$lgEtab['adresseRue'];
+    $codePostal=$lgEtab['codePostal'];
+    $ville=$lgEtab['ville'];
+    $tel=$lgEtab['tel'];
+    $adresseElectronique=$lgEtab['adresseElectronique'];
+    $type=$lgEtab['type'];
+    $civiliteResponsable=$lgEtab['civiliteResponsable'];
+    $nomResponsable=$lgEtab['nomResponsable'];
+    $prenomResponsable=$lgEtab['prenomResponsable'];
+    $nombreChambresOffertes=$lgEtab['nombreChambresOffertes'];
 
-echo "
+    echo "
 <table width='60%' cellspacing='0' cellpadding='0' align='center' 
 class='tabNonQuadrille'>
    
@@ -67,15 +68,15 @@ class='tabNonQuadrille'>
    </tr>
    <tr class='ligneTabNonQuad'>
       <td> Type: </td>";
-      if ($type==1)
-      {
-         echo "<td> Etablissement scolaire </td>";
-      }
-      else
-      {
-         echo "<td> Autre établissement </td>";
-      }
-   echo "
+    if ($type==1)
+    {
+        echo "<td> Etablissement scolaire </td>";
+    }
+    else
+    {
+        echo "<td> Autre établissement </td>";
+    }
+    echo "
    </tr>
    <tr class='ligneTabNonQuad'>
       <td> Responsable: </td>
@@ -93,4 +94,4 @@ class='tabNonQuadrille'>
       </td>
    </tr>
 </table>";
-
+});

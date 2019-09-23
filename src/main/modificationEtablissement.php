@@ -1,73 +1,75 @@
 <?php
 
-// TODO Secure it (login)
+include '_gestionSession.inc.php';
 
-include("_debut.inc.php");
-include("_gestionBase.inc.php"); 
-include("_controlesEtGestionErreurs.inc.php");
+gererSession(function(){
+
+    include("_debut.inc.php");
+    include("_gestionBase.inc.php");
+    include("_controlesEtGestionErreurs.inc.php");
 
 // CONNEXION AU SERVEUR MYSQL PUIS SÉLECTION DE LA BASE DE DONNÉES festival
 
-$connexion=connect();
-if (!$connexion)
-{
-   ajouterErreur("Echec de la connexion au serveur MySql");
-   afficherErreurs();
-   exit();
-}
+    $connexion=connect();
+    if (!$connexion)
+    {
+        ajouterErreur("Echec de la connexion au serveur MySql");
+        afficherErreurs();
+        exit();
+    }
 
-// MODIFIER UN ÉTABLISSEMENT 
+// MODIFIER UN ÉTABLISSEMENT
 
 // Déclaration du tableau des civilités
-$tabCivilite=array("M.","Mme","Melle");  
+    $tabCivilite=array("M.","Mme","Melle");
 
-$action=$_REQUEST['action'];
-$id=$_REQUEST['id'];
+    $action=$_REQUEST['action'];
+    $id=$_REQUEST['id'];
 
-// Si on ne "vient" pas de ce formulaire, il faut récupérer les données à partir 
-// de la base (en appelant la fonction obtenirDetailEtablissement) sinon on 
+// Si on ne "vient" pas de ce formulaire, il faut récupérer les données à partir
+// de la base (en appelant la fonction obtenirDetailEtablissement) sinon on
 // affiche les valeurs précédemment contenues dans le formulaire
-if ($action=='demanderModifEtab')
-{
-   $lgEtab=obtenirDetailEtablissement($connexion, $id);
-  
-   $nom=$lgEtab['nom'];
-   $adresseRue=$lgEtab['adresseRue'];
-   $codePostal=$lgEtab['codePostal'];
-   $ville=$lgEtab['ville'];
-   $tel=$lgEtab['tel'];
-   $adresseElectronique=$lgEtab['adresseElectronique'];
-   $type=$lgEtab['type'];
-   $civiliteResponsable=$lgEtab['civiliteResponsable'];
-   $nomResponsable=$lgEtab['nomResponsable'];
-   $prenomResponsable=$lgEtab['prenomResponsable'];
-   $nombreChambresOffertes=$lgEtab['nombreChambresOffertes'];
-}
-else
-{
-   $nom=$_REQUEST['nom']; 
-   $adresseRue=$_REQUEST['adresseRue'];
-   $codePostal=$_REQUEST['codePostal'];
-   $ville=$_REQUEST['ville'];
-   $tel=$_REQUEST['tel'];
-   $adresseElectronique=$_REQUEST['adresseElectronique'];
-   $type=$_REQUEST['type'];
-   $civiliteResponsable=$_REQUEST['civiliteResponsable'];
-   $nomResponsable=$_REQUEST['nomResponsable'];
-   $prenomResponsable=$_REQUEST['prenomResponsable'];
-   $nombreChambresOffertes=$_REQUEST['nombreChambresOffertes'];
+    if ($action=='demanderModifEtab')
+    {
+        $lgEtab=obtenirDetailEtablissement($connexion, $id);
 
-   verifierDonneesEtabM($connexion, $id, $nom, $adresseRue, $codePostal, $ville,  
-                        $tel, $nomResponsable, $nombreChambresOffertes);      
-   if (nbErreurs()==0)
-   {        
-      modifierEtablissement($connexion, $id, $nom, $adresseRue, $codePostal, $ville, 
-                            $tel, $adresseElectronique, $type, $civiliteResponsable, 
-                            $nomResponsable, $prenomResponsable, $nombreChambresOffertes);
-   }
-}
+        $nom=$lgEtab['nom'];
+        $adresseRue=$lgEtab['adresseRue'];
+        $codePostal=$lgEtab['codePostal'];
+        $ville=$lgEtab['ville'];
+        $tel=$lgEtab['tel'];
+        $adresseElectronique=$lgEtab['adresseElectronique'];
+        $type=$lgEtab['type'];
+        $civiliteResponsable=$lgEtab['civiliteResponsable'];
+        $nomResponsable=$lgEtab['nomResponsable'];
+        $prenomResponsable=$lgEtab['prenomResponsable'];
+        $nombreChambresOffertes=$lgEtab['nombreChambresOffertes'];
+    }
+    else
+    {
+        $nom=$_REQUEST['nom'];
+        $adresseRue=$_REQUEST['adresseRue'];
+        $codePostal=$_REQUEST['codePostal'];
+        $ville=$_REQUEST['ville'];
+        $tel=$_REQUEST['tel'];
+        $adresseElectronique=$_REQUEST['adresseElectronique'];
+        $type=$_REQUEST['type'];
+        $civiliteResponsable=$_REQUEST['civiliteResponsable'];
+        $nomResponsable=$_REQUEST['nomResponsable'];
+        $prenomResponsable=$_REQUEST['prenomResponsable'];
+        $nombreChambresOffertes=$_REQUEST['nombreChambresOffertes'];
 
-echo "
+        verifierDonneesEtabM($connexion, $id, $nom, $adresseRue, $codePostal, $ville,
+            $tel, $nomResponsable, $nombreChambresOffertes);
+        if (nbErreurs()==0)
+        {
+            modifierEtablissement($connexion, $id, $nom, $adresseRue, $codePostal, $ville,
+                $tel, $adresseElectronique, $type, $civiliteResponsable,
+                $nomResponsable, $prenomResponsable, $nombreChambresOffertes);
+        }
+    }
+
+    echo "
 <form method='POST' action='modificationEtablissement.php?'>
    <input type='hidden' value='validerModifEtab' name='action'>
    <table width='85%' cellspacing='0' cellpadding='0' align='center' 
@@ -79,8 +81,8 @@ echo "
       <tr>
          <td><input type='hidden' value='$id' name='id'></td>
       </tr>";
-      
-      echo '
+
+    echo '
       <tr class="ligneTabNonQuad">
          <td> Nom*: </td>
          <td><input type="text" value="'.$nom.'" name="nom" size="50" 
@@ -114,21 +116,21 @@ echo "
       <tr class="ligneTabNonQuad">
          <td> Type*: </td>
          <td>';
-            if ($type==1)
-            {
-               echo " 
+    if ($type==1)
+    {
+        echo " 
                <input type='radio' name='type' value='1' checked>  
                Etablissement Scolaire
                <input type='radio' name='type' value='0'>  Autre";
-             }
-             else
-             {
-                echo " 
+    }
+    else
+    {
+        echo " 
                 <input type='radio' name='type' value='1'> 
                 Etablissement Scolaire
                 <input type='radio' name='type' value='0' checked> Autre";
-              }
-           echo "
+    }
+    echo "
            </td>
          </tr>
          <tr class='ligneTabNonQuad'>
@@ -137,16 +139,16 @@ echo "
          <tr class='ligneTabNonQuad'>
             <td> Civilité*: </td>
             <td> <select name='civiliteResponsable'>";
-               for ($i=0; $i<3; $i=$i+1)
-                  if ($tabCivilite[$i]==$civiliteResponsable) 
-                  {
-                     echo "<option selected>$tabCivilite[$i]</option>";
-                  }
-                  else
-                  {
-                     echo "<option>$tabCivilite[$i]</option>";
-                  }
-               echo '
+    for ($i=0; $i<3; $i=$i+1)
+        if ($tabCivilite[$i]==$civiliteResponsable)
+        {
+            echo "<option selected>$tabCivilite[$i]</option>";
+        }
+        else
+        {
+            echo "<option>$tabCivilite[$i]</option>";
+        }
+    echo '
                </select>&nbsp; &nbsp; &nbsp; Nom*: 
                <input type="text" value="'.$nomResponsable.'" name=
                "nomResponsable" size="26" maxlength="25">
@@ -161,8 +163,8 @@ echo "
             "nombreChambresOffertes" size ="2" maxlength="3"></td>
          </tr>
    </table>';
-   
-   echo "
+
+    echo "
    <table align='center' cellspacing='15' cellpadding='0'>
       <tr>
          <td align='right'><input type='submit' value='Valider' name='valider'>
@@ -178,19 +180,18 @@ echo "
   
 </form>";
 
-// En cas de validation du formulaire : affichage des erreurs ou du message de 
+// En cas de validation du formulaire : affichage des erreurs ou du message de
 // confirmation
-if ($action=='validerModifEtab')
-{
-   if (nbErreurs()!=0)
-   {
-      afficherErreurs();
-   }
-   else
-   {
-      echo "
+    if ($action=='validerModifEtab')
+    {
+        if (nbErreurs()!=0)
+        {
+            afficherErreurs();
+        }
+        else
+        {
+            echo "
       <h5 class='center'>La modification de l'établissement a été effectuée</h5>";
-   }
-}
-
-
+        }
+    }
+});

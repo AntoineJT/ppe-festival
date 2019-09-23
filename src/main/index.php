@@ -1,11 +1,8 @@
-
 <?php
 
-session_start();
+include '_gestionSession.inc.php';
 
-if (!is_null($_SESSION['compte'])){
-    header('Location: login.php');
-} else {
+gererSession(function(){
     include "_debut.inc.php";
 
 // TODO Modifier texte accueil
@@ -35,10 +32,10 @@ if (!is_null($_SESSION['compte'])){
       <ul>
          <li>Gérer les établissements (caractéristiques et capacités d'accueil) acceptant d'héberger les groupes de musiciens.
          <p>
-	      </p>
+          </p>
          <li>Consulter, réaliser ou modifier les attributions des chambres aux groupes dans les établissements.
       </ul>
       </td>
    </tr>
 </table>";
-}
+});

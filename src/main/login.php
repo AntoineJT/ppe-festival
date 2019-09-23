@@ -26,6 +26,7 @@ if (isset($_POST['etablissement'])){
         die('Le mot de passe ne correspond pas!');
     }
     $_SESSION['compte'] = $etablissement;
+    header('Location: index.php');
 } else
 if (isset($_GET['disconnect'])){
     $_SESSION['compte'] = null;

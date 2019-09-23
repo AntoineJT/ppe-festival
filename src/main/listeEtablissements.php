@@ -1,10 +1,8 @@
 <?php
 
-session_start();
+include('_gestionSession.inc.php');
 
-if (!is_null($_SESSION['compte'])){
-    header('Location: login.php');
-} else {
+gererSession(function(){
     include("_debut.inc.php");
     include("_gestionBase.inc.php");
     include("_controlesEtGestionErreurs.inc.php");
@@ -41,40 +39,40 @@ class='tabNonQuadrille'>
         $id = $lgEtab['id'];
         $nom = $lgEtab['nom'];
         echo "
-		<tr class='ligneTabNonQuad'>
-         <td width='52%'>$nom</td>
-         
-         <td width='16%' align='center'> 
-         <a href='detailEtablissement.php?id=$id'>
-         Voir détail</a></td>
-         
-         <td width='16%' align='center'> 
-         <a href='modificationEtablissement.php?action=demanderModifEtab&amp;id=$id'>
-         Modifier</a></td>";
+    <tr class='ligneTabNonQuad'>
+     <td width='52%'>$nom</td>
+     
+     <td width='16%' align='center'> 
+     <a href='detailEtablissement.php?id=$id'>
+     Voir détail</a></td>
+     
+     <td width='16%' align='center'> 
+     <a href='modificationEtablissement.php?action=demanderModifEtab&amp;id=$id'>
+     Modifier</a></td>";
 
         // S'il existe déjà des attributions pour l'établissement, il faudra
         // d'abord les supprimer avant de pouvoir supprimer l'établissement
         if (!existeAttributionsEtab($connexion, $id))
         {
             echo "
-            <td width='16%' align='center'> 
-            <a href='suppressionEtablissement.php?action=demanderSupprEtab&amp;id=$id'>
-            Supprimer</a></td>";
+        <td width='16%' align='center'> 
+        <a href='suppressionEtablissement.php?action=demanderSupprEtab&amp;id=$id'>
+        Supprimer</a></td>";
         }
         else
         {
             echo "
             <td width='16%'>&nbsp; </td>";
+            }
+            echo "
+      </tr>";
+            $lgEtab = $rsEtab->fetch();
         }
         echo "
-      </tr>";
-        $lgEtab = $rsEtab->fetch();
-    }
-    echo "
    <tr class='ligneTabNonQuad'>
       <td colspan='4'><a href='creationEtablissement.php?action=demanderCreEtab'>
       Création d'un établissement</a ></td>
   </tr>
 </table>";
-}
+});
 
