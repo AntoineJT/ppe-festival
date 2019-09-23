@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS `Etablissement`;
 
 create table Etablissement 
 (id char(8) not null,
-mdp CHAR(95) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+mdp CHAR(60) NOT NULL,
 nom varchar(45) not null,
 adresseRue varchar(45) not null, 
 codePostal char(5) not null, 
