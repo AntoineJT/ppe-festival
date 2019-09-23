@@ -1,7 +1,7 @@
 <?php
 
 include("_debut.inc.php");
-include("_gestionBase.inc.php"); 
+include("_gestionBase.inc.php");
 include("_controlesEtGestionErreurs.inc.php");
 
 // CONNEXION AU SERVEUR MYSQL PUIS SÉLECTION DE LA BASE DE DONNÉES festival
@@ -19,11 +19,11 @@ if (!$connexion)
 // ÉTABLISSEMENT
 
 echo "
-<table width='70%' cellspacing='0' cellpadding='0' align='center' 
-class='tabNonQuadrille'>
-   <tr class='enTeteTabNonQuad'>
-      <td colspan='4'>Etablissements</td>
-   </tr>";
+<div class='table-container bg-info text-white'>
+  <div class='flex-table header'>
+  <div class='flex-row first center'>Etablissement</div>
+</div>
+";
 
    $req = obtenirReqEtablissements();
    $rsEtab = $connexion->query($req);
@@ -36,40 +36,29 @@ class='tabNonQuadrille'>
       $id = $lgEtab['id'];
       $nom = $lgEtab['nom'];
       echo "
-		<tr class='ligneTabNonQuad'>
-         <td width='52%'>$nom</td>
-         
-         <td width='16%' align='center'> 
-         <a href='detailEtablissement.php?id=$id'>
-         Voir détail</a></td>
-         
-         <td width='16%' align='center'> 
-         <a href='modificationEtablissement.php?action=demanderModifEtab&amp;id=$id'>
-         Modifier</a></td>";
-      	
+<div class='flex-table row'>
+   <div class='flex-row bg-white text-dark'>$nom</div>
+   <div class='flex-row bg-white text-dark'><a href='detailEtablissement.php?id=$id'>Voir détail</a></div>
+   <div class='flex-row bg-white text-dark'><a href='modificationEtablissement.php?action=demanderModifEtab&amp;id=$id'>Modifier</a></div
+";
+
          // S'il existe déjà des attributions pour l'établissement, il faudra
          // d'abord les supprimer avant de pouvoir supprimer l'établissement
 			if (!existeAttributionsEtab($connexion, $id))
 			{
             echo "
-            <td width='16%' align='center'> 
-            <a href='suppressionEtablissement.php?action=demanderSupprEtab&amp;id=$id'>
-            Supprimer</a></td>";
+            <div class='flex-row bg-white text-dark'><a href='suppressionEtablissement.php?action=demanderSupprEtab&amp;id=$id'>Supprimer</a></div>";
          }
          else
          {
             echo "
-            <td width='16%'>&nbsp; </td>";          
+            <div class='flex-row bg-white text-dark'>&nbsp; </div>";
 			}
 			echo "
-      </tr>";
+      </div>";
       $lgEtab = $rsEtab->fetch();
    }
    echo "
-   <tr class='ligneTabNonQuad'>
-      <td colspan='4'><a href='creationEtablissement.php?action=demanderCreEtab'>
-      Création d'un établissement</a ></td>
-  </tr>
-</table>";
+   <div class='container bg-light text-dark'><a href='creationEtablissement.php?action=demanderCreEtab'>Création d'un établissement</a ></div>
 
-
+";
