@@ -29,6 +29,7 @@ if (isset($_POST['etablissement'])){
 } else
 if (isset($_GET['disconnect'])){
     $_SESSION = null;
+    header('Location: login.php');
 } else {
     echo "
 <form method='POST'>
