@@ -170,16 +170,21 @@ td.reserve
    color:black;;
 }
 
-.bg-info{
-  border-radius: 10px 0;
-  text-align: center;
-  font-size: 3em;
-}
-
 #texteNiveau2 {
   font-size:0.7em;
 }
 
-a.nav_pills{
-  background-color: #17a2b8;
+a{
+  background-color: #343a40;
+  color: #FFFFFF;
+}
+
+a:hover{
+  background-color: #FFFFFF;
+  color: #17a2b8;
+}
+
+img{
+  max-width: 7%;
+  margin-top: -32px;
 }

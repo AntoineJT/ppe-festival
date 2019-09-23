@@ -75,4 +75,3 @@ class='tabNonQuadrille'>
   </tr>
 </table>";
 });
-
