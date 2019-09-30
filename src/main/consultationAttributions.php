@@ -65,7 +65,8 @@ gererSession(function(){
 
             // AFFICHAGE DU DÉTAIL DES ATTRIBUTIONS : UNE LIGNE PAR GROUPE AFFECTÉ
             // DANS L'ÉTABLISSEMENT
-            $rsGroupe = obtenirReqGroupesEtab($connexion, $idEtab);
+            $req = obtenirReqGroupesEtab($idEtab);
+            $rsGroupe = $connexion->query($req);
             $lgGroupe = $rsGroupe->fetch(PDO::FETCH_ASSOC);
 
             // BOUCLE SUR LES GROUPES (CHAQUE GROUPE EST AFFICHÉ EN LIGNE)
