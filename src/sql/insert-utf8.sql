@@ -1,6 +1,5 @@
 
 -- Certains établissements sont fictifs
--- IL FAUT AJOUTER DES MDP HASHE EN ARGON2ID
 -- mdp: Moka123
 insert into Etablissement values ('0350785N', '$2y$10$UMBQTbR4.6MMpJ.SPpzy8.Aq3aDVotLcYX.sHddJ0WPVBBpNb4lpS', 'Collège de Moka', '2 avenue Aristide Briand BP 6', '35401', 'Saint-Malo', '0299206990', null,1,'M.','Dupont','Alain',20);
 -- mdp: Mart321
