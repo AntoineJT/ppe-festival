@@ -11,7 +11,7 @@ if (isset($_POST['etablissement'])){
     }
     $connexion = connect();
     // TODO Move that into gestionBase
-    $request = $connexion->prepare('SELECT mdp FROM Etablissement WHERE id = ?');
+    $request = $connexion->prepare('SELECT mdp FROM Administrateur WHERE nomAdmin = ?');
     /*
     // Temporary thing to generate hash easily
     $toHash = $request->execute([$etablissement]);
@@ -34,7 +34,7 @@ if (isset($_GET['disconnect'])){
 } else {
     echo "
 <form method='POST'>
-    <label>Id Etablissement
+    <label>Compte admin
         <input type='text' name='etablissement'>
     </label><br>
     <label>Mot de passe

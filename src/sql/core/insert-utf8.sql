@@ -1,13 +1,8 @@
-
 -- Certains établissements sont fictifs
--- mdp: Moka123
-INSERT INTO Etablissement VALUES ('0350785N', '$2y$10$UMBQTbR4.6MMpJ.SPpzy8.Aq3aDVotLcYX.sHddJ0WPVBBpNb4lpS', 'Collège de Moka', '2 avenue Aristide Briand BP 6', '35401', 'Saint-Malo', '0299206990', null,1,'M.','Dupont','Alain',20);
--- mdp: Mart321
-INSERT INTO Etablissement VALUES ('0350123A', '$2y$10$FOYm.XYZoLmRrt1TY8ajheRt.zrA5R582nCP68Sh1.GTHHIG7KZ3G', 'Collège Lamartine', '3, avenue des corsaires', '35404', 'Paramé', '0299561459', null, 1,'Mme','Lefort','Anne',58);
--- mdp: LDV46
-INSERT INTO Etablissement VALUES ('0351234W', '$2y$10$xRPDgij7kIf73UmAWfqWje35cbVbvOR4m6kYwc6C4VFLJrxvrhdci', 'Collège Léonard de Vinci', '2 rue Rabelais', '35418', 'Saint-Malo', '0299117474', null, 1,'M.','Durand','Pierre',60);
--- mdp: CRI37
-INSERT INTO Etablissement VALUES ('11111111', '$2y$10$npOqUePDdKk9cugjv5eGDue6/dbJfVFDX9J6ARTyW5DtVsl7KUjf.', 'Centre de rencontres internationales', '37 avenue du R.P. Umbricht BP 108', '35407', 'Saint-Malo', '0299000000', null, 0, 'M.','Guenroc','Guy',200);
+INSERT INTO Etablissement VALUES ('0350785N', 'Collège de Moka', '2 avenue Aristide Briand BP 6', '35401', 'Saint-Malo', '0299206990', null,1,'M.','Dupont','Alain',20);
+INSERT INTO Etablissement VALUES ('0350123A', 'Collège Lamartine', '3, avenue des corsaires', '35404', 'Paramé', '0299561459', null, 1,'Mme','Lefort','Anne',58);
+INSERT INTO Etablissement VALUES ('0351234W', 'Collège Léonard de Vinci', '2 rue Rabelais', '35418', 'Saint-Malo', '0299117474', null, 1,'M.','Durand','Pierre',60);
+INSERT INTO Etablissement VALUES ('11111111', 'Centre de rencontres internationales', '37 avenue du R.P. Umbricht BP 108', '35407', 'Saint-Malo', '0299000000', null, 0, 'M.','Guenroc','Guy',200);
 
 -- Certains groupes sont incomplètement renseignés
 INSERT INTO Groupe (id, nom, nombrepersonnes, nompays, hebergement) VALUES ('g001','Groupe folklorique du Bachkortostan',40,'Bachkirie','O');
@@ -65,3 +60,6 @@ INSERT INTO Attribution VALUES ('0350123A', 'g005', 8);
 INSERT INTO Attribution VALUES ('0351234W', 'g001', 3);
 INSERT INTO Attribution VALUES ('0351234W', 'g006', 10);
 INSERT INTO Attribution VALUES ('0351234W', 'g007', 7);
+
+-- mdp: Moka123
+INSERT INTO Administrateur (nomAdmin, mdp) VALUES ('root', '$2y$10$UMBQTbR4.6MMpJ.SPpzy8.Aq3aDVotLcYX.sHddJ0WPVBBpNb4lpS');
