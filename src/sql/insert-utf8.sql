@@ -66,8 +66,3 @@ insert into Attribution values ('0350123A', 'g005', 8);
 insert into Attribution values ('0351234W', 'g001', 3);
 insert into Attribution values ('0351234W', 'g006', 10);
 insert into Attribution values ('0351234W', 'g007', 7);
-
-
-
- 
-

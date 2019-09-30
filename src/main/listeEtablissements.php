@@ -22,11 +22,13 @@ gererSession(function(){
 // ÉTABLISSEMENT
 
     echo "
-<table width='70%' cellspacing='0' cellpadding='0' align='center' 
-class='tabNonQuadrille'>
-   <tr class='enTeteTabNonQuad'>
-      <td colspan='4'>Etablissements</td>
-   </tr>";
+    <table class='mt-4 table table-bordered table-dark'>
+       <thead class='thead-light'>
+        <tr>
+        <th colspan='4'>Ligues</th>
+        </tr>
+       </thead>
+       <tbody>";
 
     $req = obtenirReqEtablissements();
     $rsEtab = $connexion->query($req);
@@ -39,39 +41,37 @@ class='tabNonQuadrille'>
         $id = $lgEtab['id'];
         $nom = $lgEtab['nom'];
         echo "
-    <tr class='ligneTabNonQuad'>
+    <tr>
      <td width='52%'>$nom</td>
-     
-     <td width='16%' align='center'> 
-     <a href='detailEtablissement.php?id=$id'>
-     Voir détail</a></td>
-     
-     <td width='16%' align='center'> 
-     <a href='modificationEtablissement.php?action=demanderModifEtab&amp;id=$id'>
-     Modifier</a></td>";
+     <td><a href='detailEtablissement.php?id=$id' class='btn btn-outline-info active'>Voir détail</a></td>
+
+     <td><a href='modificationEtablissement.php?action=demanderModifEtab&amp;id=$id' class='btn btn-outline-info active'>Modifier</a></td>
+     ";
 
         // S'il existe déjà des attributions pour l'établissement, il faudra
         // d'abord les supprimer avant de pouvoir supprimer l'établissement
         if (!existeAttributionsEtab($connexion, $id))
         {
             echo "
-        <td width='16%' align='center'> 
-        <a href='suppressionEtablissement.php?action=demanderSupprEtab&amp;id=$id'>
-        Supprimer</a></td>";
+        <td>
+        <a href='suppressionEtablissement.php?action=demanderSupprEtab&amp;id=$id' class='btn btn-outline-info active'>Supprimer</a></td>
+        ";
         }
         else
         {
             echo "
-            <td width='16%'>&nbsp; </td>";
+            <td>&nbsp; </td>
+              </tr>";
             }
             echo "
-      </tr>";
+      </tr>
+      ";
             $lgEtab = $rsEtab->fetch();
         }
         echo "
-   <tr class='ligneTabNonQuad'>
-      <td colspan='4'><a href='creationEtablissement.php?action=demanderCreEtab'>
-      Création d'un établissement</a ></td>
-  </tr>
-</table>";
+        </tbody>
+        </table>
+      <a href='creationEtablissement.php?action=demanderCreEtab'class='btn btn-outline-info active'>
+      Création d'un établissement</a>
+      ";
 });

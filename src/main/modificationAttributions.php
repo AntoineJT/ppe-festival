@@ -44,18 +44,22 @@ gererSession(function(){
     }
 
     echo "
-<table width='80%' cellspacing='0' cellpadding='0' align='center' 
-class='tabQuadrille'>";
+    <table class='mt-4 table table-bordered table-dark'>
+    >";
 
     // AFFICHAGE DE LA 1ÈRE LIGNE D'EN-TÊTE
     echo "
-   <tr class='enTeteTabQuad'>
-      <td colspan=$nb><strong>Attributions</strong></td>
-   </tr>";
+    <thead class='thead-light'>
+     <tr>
+     <th colspan='5'>Attributions</th>
+     </tr>
+    </thead>
+    <tbody>
+    ";
 
     // AFFICHAGE DE LA 2ÈME LIGNE D'EN-TÊTE (ÉTABLISSEMENTS)
     echo "
-   <tr class='ligneTabQuad'>
+   <tr>
       <td>&nbsp;</td>";
 
     $req=obtenirReqEtablissementsOffrantChambres();
@@ -97,7 +101,7 @@ class='tabQuadrille'>";
         $idGroupe=$lgGroupe['id'];
         $nom=$lgGroupe['nom'];
         echo "
-      <tr class='ligneTabQuad'>
+      <tr>
          <td width='25%'>$nom</td>";
         $req=obtenirReqEtablissementsOffrantChambres();
         $rsEtab = $connexion->query($req);
@@ -128,7 +132,7 @@ class='tabQuadrille'>";
                 $nbMax = $nbChLib + $nbOccupGroupe;
                 echo "
             <td class='reserve'>
-            <a href='donnerNbChambres.php?idEtab=$idEtab&amp;idGroupe=$idGroupe&amp;nbChambres=$nbMax'>
+            <a href='donnerNbChambres.php?idEtab=$idEtab&amp;idGroupe=$idGroupe&amp;nbChambres=$nbMax' class='btn btn-outline-info active'>
             $nbOccupGroupe</a></td>";
             }
             else
@@ -140,12 +144,12 @@ class='tabQuadrille'>";
                 {
                     echo "
                <td class='reserveSiLien'>
-               <a href='donnerNbChambres.php?idEtab=$idEtab&amp;idGroupe=$idGroupe&amp;nbChambres=$nbChLib'>
+               <a href='donnerNbChambres.php?idEtab=$idEtab&amp;idGroupe=$idGroupe&amp;nbChambres=$nbChLib' class='btn btn-outline-info active'>
                __</a></td>";
                 }
                 else
                 {
-                    echo "<td class='reserveSiLien'>&nbsp;</td>";
+                    echo "<td>&nbsp;</td>";
                 }
             }
             $lgEtab = $rsEtab->fetch(PDO::FETCH_ASSOC);
@@ -153,18 +157,19 @@ class='tabQuadrille'>";
         $lgGroupe = $rsGroupe->fetch(PDO::FETCH_ASSOC);
     } // Fin de la boucle sur les groupes à héberger
     echo "
+</tbody>
 </table>"; // Fin du tableau principal
 
 // AFFICHAGE DE LA LÉGENDE
     echo "
-<table align='center' width='80%'>
+<table class='mt-4 table table-bordered table-dark'>
    <tr>
-      <td width='34%' align='left'><a href='consultationAttributions.php'>Retour</a>
-      </td>
       <td class='reserveSiLien'>&nbsp;</td>
       <td width='30%' align='left'>Réservation possible si lien</td>
       <td class='reserve'>&nbsp;</td>
       <td width='30%' align='left'>Chambres réservées</td>
    </tr>
-</table>";
+</table>
+<a href='consultationAttributions.php' class='btn btn-outline-info active'>Retour</a>
+";
 });
