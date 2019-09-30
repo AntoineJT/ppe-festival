@@ -26,7 +26,7 @@ gererSession(function(){
 // Recherche du nombre d'établissements offrant des chambres pour le
 // dimensionnement des colonnes
     $nbEtabOffrantChambres=obtenirNbEtabOffrantChambres($connexion);
-    $nb=$nbEtabOffrantChambres+1;
+    // $nb=$nbEtabOffrantChambres+1;
 // Détermination du pourcentage de largeur des colonnes "établissements"
     $pourcCol=50/$nbEtabOffrantChambres;
 
