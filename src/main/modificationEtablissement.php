@@ -72,6 +72,7 @@ gererSession(function(){
     echo "
 <form method='POST' action='modificationEtablissement.php?'>
    <input type='hidden' value='validerModifEtab' name='action'>
+   <input type='hidden' value='$id' name='id'>
    <table class='mt-4 table table-bordered table-dark'>
       <thead class='thead-light'>
        <tr>
