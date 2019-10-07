@@ -32,15 +32,22 @@ if (isset($_GET['disconnect'])){
     $_SESSION['compte'] = null;
     header('Location: login.php');
 } else {
-    echo "
-<form method='POST'>
-    <label>Compte admin
-        <input type='text' name='etablissement'>
-    </label><br>
-    <label>Mot de passe
-        <input type='password' name='mdp'>
-    </label><br>
-    <input type='submit' value='Valider'>
-</form>";
-
+    echo
+  '
+  <head>
+  <link href="css/connect.css" rel="stylesheet" type="text/css">
+  <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+  </head>
+  <body class="text-center">
+    <form method="POST" class="form-signin">
+      <img class="mb-4" src="images/mdl.png" class="rounded float-right" alt="Responive image"">
+      <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+      <label for="etablissement" class="sr-only">ID</label>
+      <input type="text" name="etablissement" class="form-control" placeholder="Email address" required autofocus>
+      <label for="mdp" class="sr-only">Mot de Passe</label>
+      <input type="password" name="mdp" class="form-control" placeholder="Password" required>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Se Connecter</button>
+    </form>
+  </body>
+  ';
 }

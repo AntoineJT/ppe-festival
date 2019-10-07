@@ -15,7 +15,7 @@ echo '
     <body class="ml-5 mr-5 p-3 mb-2 bg-dark text-dark">
         <div class="p-3 mb-2 bg-info text-white">
           Maison des Ligues <br>
-          Hébergement des groupes</span>
+          Hébergement des équipes</span>
           <img src="images/mdl.png" class="rounded float-right" alt="Responive image"">
         </div>
         <nav class="m-2 nav nav_pills nav-fill">

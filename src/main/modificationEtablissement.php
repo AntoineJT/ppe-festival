@@ -133,7 +133,7 @@ gererSession(function(){
            </td>
          </tr>
          <tr>
-            <td colspan='2' ><strong>Responsable:</strong></td>
+            <td colspan='2' ><strong>Responsable :</strong></td>
          </tr>
          <tr>
             <td> Civilité </td>
@@ -148,10 +148,10 @@ gererSession(function(){
             echo "<option>$tabCivilite[$i]</option>";
         }
     echo '
-               </select>&nbsp; &nbsp; &nbsp; Nom*:
+               </select>&nbsp; &nbsp; &nbsp; Nom :
                <input type="text" value="'.$nomResponsable.'" name=
                "nomResponsable" size="26" maxlength="25">
-               &nbsp; &nbsp; &nbsp; Prénom:
+               &nbsp; &nbsp; &nbsp; Prénom :
                <input type="text"  value="'.$prenomResponsable.'" name=
                "prenomResponsable" size="26" maxlength="25">
             </td>

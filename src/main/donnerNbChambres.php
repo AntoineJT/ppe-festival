@@ -24,26 +24,39 @@ gererSession(function(){
     $nbChambres=$_REQUEST['nbChambres'];
 
     echo "
-<form method='POST' action='modificationAttributions.php'>
-	<input type='hidden' value='validerModifAttrib' name='action'>
+    <table class='mt-4 table table-bordered table-dark'>
+       <thead class='thead-light'>
+        <tr>
+        <th colspan='2'>Modification</th>
+        </tr>
+       </thead>
+       <tbody>
+
+   <form method='POST' action='modificationAttributions.php'>
+	 <input type='hidden' value='validerModifAttrib' name='action'>
    <input type='hidden' value='$idEtab' name='idEtab'>
    <input type='hidden' value='$idGroupe' name='idGroupe'>";
     $nomGroupe=obtenirNomGroupe($connexion, $idGroupe);
 
     echo "
-   <br><div class='center'><h5>Combien de chambres souhaitez-vous pour le 
-   groupe $nomGroupe dans cet établissement ?";
+   <tr><td>Combien de chambres souhaitez-vous pour le
+   groupe $nomGroupe dans cet établissement ?</td>
+   ";
 
-    echo "&nbsp;<select name='nbChambres'>";
+    echo "<td>&nbsp;<select name='nbChambres'>";
     for ($i=0; $i<=$nbChambres; $i++)
     {
         echo "<option>$i</option>";
     }
     echo "
+   </td></tr>
    </select></h5>
-   <input type='submit' value='Valider' name='valider'>&nbsp&nbsp&nbsp&nbsp
-   <input type='reset' value='Annuler' name='Annuler'><br><br>
-   <a href='modificationAttributions.php?action=demanderModifAttrib'>Retour</a>
-   </div>
-</form>";
+   <td>
+   <input type='submit' value='Valider' class='btn btn-outline-info active' name='valider'>&nbsp&nbsp&nbsp&nbsp
+   <input type='reset' value='Annuler'class='btn btn-outline-info active'  name='Annuler'><br><br>
+   </td>
+   </form>
+   </tbody>
+   </table><a href='modificationAttributions.php?action=demanderModifAttrib' class='btn btn-outline-info active'>Retour</a>
+";
 });
