@@ -23,7 +23,7 @@ if (isset($_POST['etablissement'])){
     }
     $hash = $request->fetch()[0];
     if (!password_verify($mdp, $hash)){
-        die('Le mot de passe ne correspond pas!');
+        die('Le couple identifiant/mot de passe est invalide!');
     }
     $_SESSION['compte'] = $etablissement;
     header('Location: index.php');
