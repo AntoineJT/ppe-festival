@@ -31,7 +31,11 @@ Route::get('/accueil', function () {
     return embedInMainView($content);
 });
 
+// https://stackoverflow.com/questions/19760585/laravel-throwing-methodnotallowedhttpexception
 Route::get('/login', function () {
     return view('pages/login');
 });
 
+Route::get('/consultationAttributions', function() {
+    return view('pages/consultationAttributions');
+});
