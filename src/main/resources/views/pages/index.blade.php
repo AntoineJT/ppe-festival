@@ -1,9 +1,7 @@
 @php
-include '../includes/_gestionSession.inc.php';
+include app_path() . '/includes/_gestionSession.inc.php';
 
 gererSession(function(){
-    include "_debut.inc.php";
-
     echo "<br>
     <div class='p-3 mb-2 bg-teal text-white'>
         Cette application web permet de gérer l'hébergement des groupes de musique
