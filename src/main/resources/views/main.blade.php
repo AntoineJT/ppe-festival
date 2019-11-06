@@ -1,3 +1,11 @@
+@php
+    use \Illuminate\Support\Facades\Session;
+
+    // TODO Rediriger vers page login quand sera fait
+    if (is_null(Session::get('compte'))) {
+        // redirect()->route('login');
+    }
+@endphp
 <!DOCTYPE HTML>
 <html lang="fr">
     <head>
