@@ -33,10 +33,10 @@ if (isset($_GET['disconnect'])){
     header('Location: login.php');
 } else {
     echo
-  '
+    '
   <head>
-  <link href="css/connect.css" rel="stylesheet" type="text/css">
-  <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="../css/connect.css" rel="stylesheet" type="text/css">
+  <link href="../css/bootstrap.css" rel="stylesheet" type="text/css">
   </head>
   <body class="text-center">
     <form method="POST" class="form-signin">
