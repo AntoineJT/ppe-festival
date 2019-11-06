@@ -14,10 +14,10 @@
             <img src="{{ asset('images/mdl.png') }}" class="rounded float-right" alt="Responsive image">
         </div>
         <nav class="m-2 nav nav_pills nav-fill">
-            <a class="nav-link nav-item" href="index.php"><i class="fas fa-home"></i>&nbsp&nbspAccueil</a>
+            <a class="nav-link nav-item" href="/accueil"><i class="fas fa-home"></i>&nbsp&nbspAccueil</a>
             <a class="nav-link nav-item" href="listeEtablissements.php">Gestion des ligues&nbsp&nbsp<i class="fas fa-tasks"></i></a>
             <a class="nav-link nav-item" href="consultationAttributions.php">Attributions chambres&nbsp&nbsp<i class="fas fa-bed"></i></a>
-            <a class="nav-link nav-item" href="login.php?disconnect">Déconnexion  &nbsp  &nbsp<i class="fas fa-sign-out-alt"></i></a>
+            <a class="nav-link nav-item" href="login.php?disconnect">Déconnexion&nbsp&nbsp<i class="fas fa-sign-out-alt"></i></a>
         </nav>
         {!! $content !!}
     </body>
