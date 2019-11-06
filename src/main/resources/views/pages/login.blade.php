@@ -61,7 +61,7 @@
 </head>
 <body class="text-center">
     <form method="POST" class="form-signin">
-        <img class="mb-4" src="images/mdl.png" class="rounded float-right" alt="Responive image">
+        <img class="mb-4" src="images/mdl.png" class="rounded float-right" alt="Responsive image">
         <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
         <label for="etablissement" class="sr-only">ID</label>
         <input type="text" name="etablissement" class="form-control" placeholder="ID" required autofocus>
