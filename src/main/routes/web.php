@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 function embedInMainView(string $content) {
     return view('main', [
         'title' => 'Accueil',
