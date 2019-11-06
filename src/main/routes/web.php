@@ -13,7 +13,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-function embedInMainView(string $content) {
+function embedInMainView(string $content)
+{
     return view('main', [
         'title' => 'Accueil',
         'content' => $content
@@ -25,8 +26,12 @@ Route::get('/', function () {
 });
 
 // TODO Mettre en tant que racine (?)
-Route::get('/accueil', function(){
+Route::get('/accueil', function () {
     $content = view('pages/index');
     return embedInMainView($content);
+});
+
+Route::get('/login', function () {
+    return view('pages/login');
 });
 
