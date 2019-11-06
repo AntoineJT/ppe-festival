@@ -11,6 +11,21 @@
 |
 */
 
+function embedInMainView(string $content) {
+    return view('main', [
+        'title' => 'Accueil',
+        'content' => $content
+    ]);
+}
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+// TODO Mettre en tant que racine + gérer connexion
+Route::get('/accueil', function(){
+    $content = view('pages/index');
+    return embedInMainView($content);
+    // return embedInMainView('<p style="color:white;">test</p>');
+});
+
