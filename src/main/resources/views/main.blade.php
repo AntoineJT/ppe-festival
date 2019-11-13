@@ -2,7 +2,8 @@
     use \Illuminate\Support\Facades\Session;
 
     // TODO Rediriger vers page login quand sera fait
-    if (is_null(Session::get('compte'))) {
+    $isLogged = is_null(Session::get('compte'));
+    if (!$isLogged) {
         // redirect()->route('login');
     }
 @endphp
@@ -27,6 +28,8 @@
             <a class="nav-link nav-item" href="consultationAttributions.php">Attributions chambres&nbsp&nbsp<i class="fas fa-bed"></i></a>
             <a class="nav-link nav-item" href="login.php?disconnect">Déconnexion&nbsp&nbsp<i class="fas fa-sign-out-alt"></i></a>
         </nav>
-        {!! $content !!}
+            @if ($isLogged)
+                {!! $content !!}
+            @endif
     </body>
 </html>
