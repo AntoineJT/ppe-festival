@@ -1,9 +1,11 @@
 @php
-    use \Illuminate\Support\Facades\Session;
+    use Illuminate\Support\Facades\Redirect;use \Illuminate\Support\Facades\Session;
 
     // TODO Rediriger vers page login quand sera fait
-    $isLogged = is_null(Session::get('compte'));
+    $isLogged = Session::get('compte') != NULL;
     if (!$isLogged) {
+        // TODO faire fonctionner la redirection
+        return Redirect::to('/login');
         // redirect()->route('login');
     }
 @endphp
