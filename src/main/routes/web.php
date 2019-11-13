@@ -37,5 +37,6 @@ Route::get('/login', function () {
 });
 
 Route::get('/consultationAttributions', function() {
-    return view('pages/consultationAttributions');
+    $content = view('pages/consultationAttributions');
+    return embedInMainView($content);
 });

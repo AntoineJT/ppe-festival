@@ -23,7 +23,7 @@ gererSession(function(){
     $nbEtab = obtenirNbEtabOffrantChambres($connexion);
     if ($nbEtab != 0) {
         echo "
-       <a href='modificationAttributions.php?action=demanderModifAttrib' class='mt-4 btn btn-outline-info active'>
+       <a href='../modificationAttributions.php?action=demanderModifAttrib' class='mt-4 btn btn-outline-info active'>
        Effectuer ou modifier les attributions</a><br>";
 
         // POUR CHAQUE ÉTABLISSEMENT : AFFICHAGE D'UN TABLEAU COMPORTANT 2 LIGNES
