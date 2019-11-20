@@ -26,21 +26,39 @@ function embedInMainView(string $content)
     ]);
 }
 
-Route::get('/', function () {
-    return view('welcome');
-});
+function embedPageInMainView(string $path) {
+    $content = view('pages/' . $path);
+    return embedInMainView($content);
+}
+
+function declareSubpage(string $path) {
+    Route::get($path, function() use ($path) {
+        return embedPageInMainView($path);
+    });
+}
+
+function declareView(string $uri, string $path) {
+    Route::get($uri, function() use ($path) {
+        return view($path);
+    });
+}
+
+function declareEmbedView(string $uri, string $path) {
+    Route::get($uri, function() use ($path) {
+        $content = view($path);
+        return embedInMainView($content);
+    });
+}
+
+// default thing
+declareView('/', 'welcome');
 
 // TODO Mettre en tant que racine (?)
-Route::get('/accueil', function () {
-    $content = view('pages/index');
-    return embedInMainView($content);
-});
+declareEmbedView('/accueil', 'pages/index');
 
 // https://stackoverflow.com/questions/19760585/laravel-throwing-methodnotallowedhttpexception
 // https://scotch.io/tutorials/simple-and-easy-laravel-login-authentication
-Route::get('/login', function () {
-    return view('pages/login');
-});
+declareView('/login', 'pages/login');
 Route::post('/login', ['uses' => 'AuthController@doLogin']);
 
 Route::get('/logout', function(){
@@ -48,19 +66,7 @@ Route::get('/logout', function(){
     return Redirect::to('login');
 });
 
-Route::get('/consultationAttributions', function() {
-    $content = view('pages/consultationAttributions');
-    return embedInMainView($content);
-});
-
-/*
-Route::get('/donnerNbChambres', function() {
-    $content = view('pages/donnerNbChambres');
-    return embedInMainView($content);
-});
-*/
-
-Route::get('/detailEtablissement', function() {
-    $content = view('pages/detailEtablissement');
-    return embedInMainView($content);
-});
+declareSubpage('consultationAttributions');
+// declareSubpage('donnerNbChambres');
+declareSubpage('detailEtablissement');
+declareSubpage('listeEtablissements');
