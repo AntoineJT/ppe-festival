@@ -52,3 +52,15 @@ Route::get('/consultationAttributions', function() {
     $content = view('pages/consultationAttributions');
     return embedInMainView($content);
 });
+
+/*
+Route::get('/donnerNbChambres', function() {
+    $content = view('pages/donnerNbChambres');
+    return embedInMainView($content);
+});
+*/
+
+Route::get('/detailEtablissement', function() {
+    $content = view('pages/detailEtablissement');
+    return embedInMainView($content);
+});
