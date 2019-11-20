@@ -27,15 +27,7 @@ class AuthController extends Controller
             'mdp' => Request::input('mdp')
         ];
 
-        // attempt to do the login
-        // if (Auth::attempt($data)) {
-            // validation successful!
-            // redirect them to the secure section or whatever
-            // return Redirect::to('secure');
-            // for now we'll just echo success (even though echoing in a controller is bad)
-            //echo 'SUCCESS!';
         return self::verifyCredentials($data);
-        // }
     }
 
     private static function verifyCredentials(array $data){
@@ -61,12 +53,4 @@ class AuthController extends Controller
         Request::session()->put('compte', $etablissement);
         return Redirect::to('accueil');
     }
-
-    // TODO To implement
-    /*
-        if (Request::has('disconnect')) {
-            Request::session()->remove('compte');
-            redirect()->route('login');
-        }
-     */
 }
