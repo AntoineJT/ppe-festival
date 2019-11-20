@@ -53,7 +53,7 @@
 @endphp
           <tr>
              <th colspan='2' align='left'><strong>{{ $nomEtab }}</strong>&nbsp;
-             (Offre : $nbOffre&nbsp;&nbsp;Disponibilités : $nbChLib)
+             (Offre : {{ $nbOffre }}&nbsp;&nbsp;Disponibilités : {{ $nbChLib }})
              </th>
           </tr>
           </thead>
