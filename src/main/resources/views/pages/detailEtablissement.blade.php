@@ -11,7 +11,8 @@
     }
     */
 
-    // TODO Post on it and remove this mock
+    // TODO Post (get) on it and remove this mock
+    // TODO Gérer cas où on se co sans input id etablissement
     $id = '0350785N';
     // $id = (new Illuminate\Http\Request)->input('id');
 
