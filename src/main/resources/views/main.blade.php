@@ -1,14 +1,3 @@
-@php
-    use Illuminate\Support\Facades\Redirect;use \Illuminate\Support\Facades\Session;
-
-    // TODO Rediriger vers page login quand sera fait
-    $isLogged = Session::get('compte') != NULL;
-    if (!$isLogged) {
-        // TODO faire fonctionner la redirection
-        return Redirect::to('/login');
-        // redirect()->route('login');
-    }
-@endphp
 <!DOCTYPE HTML>
 <html lang="fr">
     <head>
@@ -30,8 +19,8 @@
             <a class="nav-link nav-item" href="consultationAttributions.php">Attributions chambres&nbsp&nbsp<i class="fas fa-bed"></i></a>
             <a class="nav-link nav-item" href="login.php?disconnect">Déconnexion&nbsp&nbsp<i class="fas fa-sign-out-alt"></i></a>
         </nav>
-            @if ($isLogged)
-                {!! $content !!}
-            @endif
+        @if (session('compte') != NULL)
+            {!! $content !!}
+        @endif
     </body>
 </html>

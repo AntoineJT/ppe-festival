@@ -11,11 +11,15 @@
 |
 */
 
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
 function embedInMainView(string $content)
 {
+    if (session('compte') == NULL) {
+        return Redirect::to('login');
+    }
     return view('main', [
         'title' => 'Accueil',
         'content' => $content
