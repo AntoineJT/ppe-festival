@@ -10,7 +10,7 @@
     <body class="ml-5 mr-5 p-3 mb-2 bg-dark text-dark">
         <div class="p-3 mb-2 bg-info text-white">
             Maison des Ligues <br>
-            Hébergement des équipes</span>
+            Hébergement des équipes
             <img src="{{ asset('images/mdl.png') }}" class="rounded float-right" alt="Responsive image">
         </div>
         <nav class="m-2 nav nav_pills nav-fill">
